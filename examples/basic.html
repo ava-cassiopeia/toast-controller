@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>Toast Controller | Basic</title>
+
+        <script src="../src/ToastController.js"></script>
+
+        <style>
+            body{
+                font-family: sans-serif;
+            }
+        </style>
+        <link rel="stylesheet" type="text/css" href="../dist/css/toast.css" />
+    </head>
+    <body>
+        <h3>Toast Controller</h3>
+        <input type="text" placeholder="Content text" id="toast-content" />
+        <button type="button" onclick="openTestToast()">
+            Open Toast
+        </button>
+
+        <script type="text/javascript">
+            function openTestToast(){
+                var content = document.getElementById('toast-content').value;
+
+                ToastController.openToast('test', content);
+            }
+        </script>
+    </body>
+</html>

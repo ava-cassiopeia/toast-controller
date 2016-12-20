@@ -1,0 +1,25 @@
+{
+  "name": "toast-controller",
+  "version": "0.1.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "toast",
+    "material",
+    "design",
+    "material",
+    "popup"
+  ],
+  "author": "Ivan Mattie",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.0.0"
+  }
+}
