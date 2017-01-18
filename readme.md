@@ -1,6 +1,6 @@
 # ToastController.js
 
-Vanilla JS implementation of the Toast, a popular UI element used primarily by
+Vanilla JS, performant implementation of the Toast, a popular UI element used primarily by
 Google and material design applications. Built to be plug-and-play, but you can
 easily extend and modify the JS and CSS to your liking. 
 
