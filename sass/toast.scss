@@ -14,6 +14,7 @@
     will-change: transform;
     transition: all 300ms ease-out;
     font-size: 16px;
+    max-width: 15em;
 
     &.open{
         transform: translateY(-65px);
@@ -37,6 +38,7 @@
         border-radius: 0px;
         width: 100vw;
         box-sizing: border-box;
+        max-width: none;
 
         &.open {
             transform: translateY(-60px);
