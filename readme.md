@@ -4,6 +4,11 @@ Vanilla JS implementation of the Toast, a popular UI element used primarily by
 Google and material design applications. Built to be plug-and-play, but you can
 easily extend and modify the JS and CSS to your liking. 
 
+Basic useage and examples are provided below. If you require additional
+documentation, please check out the
+[project wiki](https://github.com/aeolingamenfel/toast-controller/wiki). If you
+are still having trouble/questions, feel free to open an issue. 
+
 ## Importing into Your Project
 
 To import this into your project/website, download the lastest copy of the
