@@ -1,8 +1,12 @@
+$toast_offset_left: 5px !default;
+$toast_offset_bottom: 5px !default;
+$toast_mobile_cutoff: 320px !default;
+
 .toast{
     display: flex;
     position: fixed;
     align-items: center;
-    left: 5px;
+    left: $toast_offset_left;
     bottom: -60px;
     z-index: 11000;
     background: #333;
@@ -17,7 +21,7 @@
     max-width: 15em;
 
     &.open{
-        transform: translateY(-65px);
+        transform: translateY(-60px - $toast_offset_bottom);
     }
 
     .text {
@@ -31,7 +35,7 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: $toast_mobile_cutoff) {
     .toast {
         font-size: 18px;
         left: 0px;
