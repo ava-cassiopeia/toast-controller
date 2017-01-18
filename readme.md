@@ -28,7 +28,7 @@ get more detailed information on methods and options.
 
 ### Basics
 
-To open a Toast, just called `ToastController.openToast()`. The Toast will
+To open a Toast, just call `ToastController.openToast()`. The Toast will
 automatically close after 5 seconds (or a delay of your specification):
 
 ```
