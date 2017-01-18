@@ -6,6 +6,8 @@
 
         <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
 
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
         <script src="../src/ToastController.js"></script>
 
         <style>
@@ -18,18 +20,30 @@
     <body>
         <h3>Toast Controller</h3>
         <input type="text" placeholder="Content text" id="toast-content" />
-        <button type="button" onclick="openTestToast()">
+        <button type="button" onclick="openTestToast(false)">
             Open Toast
+        </button>
+        <button type="button" onclick="openTestToast(true)">
+            Open with Icon
         </button>
         <p>
             Enter some text and press open toast to see a toast with that value.
         </p>
 
         <script type="text/javascript">
-            function openTestToast(){
+            function openTestToast(withIcon){
                 var content = document.getElementById('toast-content').value;
 
-                ToastController.openToast('test', content);
+                var config = {
+                    name: "test",
+                    text: content
+                };
+
+                if(withIcon) {
+                    config.icon = "done";
+                }
+
+                ToastController.openToast(config);
             }
         </script>
     </body>

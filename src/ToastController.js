@@ -4,13 +4,20 @@
 
         this.container = document.createElement("div");
         this.activeToasts = {};
+        this.iconBase = "material-icons";
 
         this.container.id = "__toast_container";
         body.appendChild(this.container);
     };
 
-    ToastController.prototype.openToast = function(name, text){
-        var toast = new Toast(name, text, this);
+    ToastController.prototype.openToast = function(data){
+        var toast = new Toast(data.name, data.text, this);
+
+        if(data.icon) {
+            toast.icon = data.icon;
+        }
+
+        toast.create();
 
         this.activeToasts[name] = toast;
     };
@@ -27,16 +34,23 @@
         this.controller = controller;
         this.isOpen = false;
         this.closed = false;
-
-        this.create();
+        this.icon = false;
     };
 
     Toast.prototype.create = function(){
         var self = this;
+        var textContainer = document.createElement("span");
         this.element = document.createElement("div");
 
         this.element.className = "toast";
-        this.element.innerHTML = this.text;
+        textContainer.className = "text";
+        textContainer.innerHTML = this.text;
+
+        if(this.icon) {
+            this.element.appendChild(this.buildIcon());
+        }
+
+        this.element.appendChild(textContainer);
 
         // Bindings
         this.element.addEventListener("transitionend", function(e){
@@ -57,6 +71,15 @@
         setTimeout(function(){
             self.close();
         }, 5000);
+    };
+
+    Toast.prototype.buildIcon = function() {
+        var icon = document.createElement("i");
+
+        icon.className = window.ToastController.iconBase + " icon";
+        icon.innerHTML = this.icon;
+
+        return icon;
     };
 
     Toast.prototype.onClick = function(e){

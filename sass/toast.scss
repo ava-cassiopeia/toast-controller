@@ -1,6 +1,7 @@
 .toast{
-    display: block;
+    display: flex;
     position: fixed;
+    align-items: center;
     left: 5px;
     bottom: -60px;
     z-index: 11000;
@@ -16,6 +17,16 @@
 
     &.open{
         transform: translateY(-65px);
+    }
+
+    .text {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .icon {
+        margin: 0 0.25em 0 0;
     }
 }
 
