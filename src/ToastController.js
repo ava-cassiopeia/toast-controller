@@ -17,6 +17,10 @@
             toast.icon = data.icon;
         }
 
+        if(data.delay) {
+            toast.delay = data.delay;
+        }
+
         toast.create();
 
         this.activeToasts[name] = toast;
@@ -35,6 +39,7 @@
         this.isOpen = false;
         this.closed = false;
         this.icon = false;
+        this.delay = 5000;
     };
 
     Toast.prototype.create = function(){
@@ -70,7 +75,7 @@
 
         setTimeout(function(){
             self.close();
-        }, 5000);
+        }, this.delay);
     };
 
     Toast.prototype.buildIcon = function() {

@@ -19,19 +19,24 @@
     </head>
     <body>
         <h3>Toast Controller</h3>
-        <input type="text" placeholder="Content text" id="toast-content" />
-        <button type="button" onclick="openTestToast(false)">
+        <input type="text" placeholder="Content text" id="toast-content" /><br />
+        <button type="button" onclick="openTestToast(false, false)">
             Open Toast
         </button>
-        <button type="button" onclick="openTestToast(true)">
+        <br />
+        <button type="button" onclick="openTestToast(false, true)">
             Open with Icon
+        </button>
+        <br />
+        <button type="button" onclick="openTestToast(true, true)">
+            Open (Low Delay)
         </button>
         <p>
             Enter some text and press open toast to see a toast with that value.
         </p>
 
         <script type="text/javascript">
-            function openTestToast(withIcon){
+            function openTestToast(fast, withIcon){
                 var content = document.getElementById('toast-content').value;
 
                 var config = {
@@ -41,6 +46,10 @@
 
                 if(withIcon) {
                     config.icon = "done";
+                }
+
+                if(fast) {
+                    config.delay = 1000;
                 }
 
                 ToastController.openToast(config);
