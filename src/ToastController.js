@@ -24,6 +24,8 @@
         toast.create();
 
         this.activeToasts[name] = toast;
+
+        return toast;
     };
 
     ToastController.prototype.closeToast = function(name){
