@@ -1,6 +1,9 @@
 $toast_offset_left: 5px !default;
 $toast_offset_bottom: 5px !default;
 $toast_mobile_cutoff: 320px !default;
+$toast_font_size: 16px !default;
+$toast_font_size_mobile: $toast_font_size + 2px !default;
+$toast_mobile_style_change: true !default;
 
 .toast{
     display: flex;
@@ -17,7 +20,7 @@ $toast_mobile_cutoff: 320px !default;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     will-change: transform;
     transition: all 300ms ease-out;
-    font-size: 16px;
+    font-size: $toast_font_size;
     max-width: 15em;
 
     &.open{
@@ -35,17 +38,19 @@ $toast_mobile_cutoff: 320px !default;
     }
 }
 
-@media screen and (max-width: $toast_mobile_cutoff) {
-    .toast {
-        font-size: 18px;
-        left: 0px;
-        border-radius: 0px;
-        width: 100vw;
-        box-sizing: border-box;
-        max-width: none;
+@if($toast_mobile_style_change){
+    @media screen and (max-width: $toast_mobile_cutoff) {
+        .toast {
+            font-size: $toast_font_size_mobile;
+            left: 0px;
+            border-radius: 0px;
+            width: 100vw;
+            box-sizing: border-box;
+            max-width: none;
 
-        &.open {
-            transform: translateY(-60px);
+            &.open {
+                transform: translateY(-60px);
+            }
         }
     }
 }
