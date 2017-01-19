@@ -21,6 +21,10 @@
             toast.delay = data.delay;
         }
 
+        if(data.className) {
+            toast.className = data.className;
+        }
+
         toast.create();
 
         this.activeToasts[name] = toast;
@@ -34,6 +38,33 @@
         }
     };
 
+    ToastController.prototype.success = function(text) {
+        return this.openToast({
+            name: "sucess",
+            text: text,
+            icon: "done",
+            className: "success"
+        });
+    };
+
+    ToastController.prototype.error = function(text) {
+        return this.openToast({
+            name: "error",
+            text: text,
+            icon: "error",
+            className: "error"
+        });
+    };
+
+    ToastController.prototype.warn = function(text) {
+        return this.openToast({
+            name: "warning",
+            text: text,
+            icon: "warning",
+            className: "warn"
+        });
+    };
+
     var Toast = function(name, text, controller){
         this.name = name;
         this.text = text;
@@ -41,6 +72,7 @@
         this.isOpen = false;
         this.closed = false;
         this.icon = false;
+        this.className = "";
         this.delay = 5000;
     };
 
@@ -49,7 +81,7 @@
         var textContainer = document.createElement("span");
         this.element = document.createElement("div");
 
-        this.element.className = "toast";
+        this.element.className = "toast " + this.className;
         textContainer.className = "text";
         textContainer.innerHTML = this.text;
 
@@ -108,7 +140,7 @@
         this.isOpen = true;
 
         requestAnimationFrame(function(){
-            self.element.className = "toast open";
+            self.element.className = "toast open " + self.className;
         });
     };
 
@@ -124,7 +156,7 @@
         this.closed = true;
 
         requestAnimationFrame(function(){
-            self.element.className = "toast";
+            self.element.className = "toast " + self.className;
         });
     };
 
