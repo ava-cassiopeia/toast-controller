@@ -56,7 +56,8 @@
             name: "error",
             text: text,
             icon: "error",
-            className: "error"
+            className: "error",
+            priority: window.ToastPriority.HIGH
         });
     };
 
@@ -65,7 +66,8 @@
             name: "warning",
             text: text,
             icon: "warning",
-            className: "warn"
+            className: "warn",
+            priority: window.ToastPriority.HIGH
         });
     };
 
