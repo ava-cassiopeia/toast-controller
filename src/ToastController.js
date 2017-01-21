@@ -136,6 +136,8 @@
         icon.className = window.ToastController.iconBase + " icon";
         icon.innerHTML = this.icon;
 
+        icon.setAttribute("aria-hidden", "true");
+
         return icon;
     };
 
