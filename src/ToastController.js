@@ -1,32 +1,72 @@
 (function(){
+    /**
+     * Creates a new ToastController, which is a manager for Toasts. Should only
+     * ever be one of these on a page.
+     * @class
+     */
     var ToastController = function(){
-        var body = document.getElementsByTagName("body")[0];
-
-        this.container = document.createElement("div");
         this.activeToasts = {};
         this.iconBase = "material-icons";
 
+        // Setup the container for Toasts
+        this.createContainer();
+    };
+
+    /**
+     * Creates a hidden div on the page to contain Toasts inside of it. The div 
+     * will be a child of the document body.
+     */
+    ToastController.prototype.createContainer = function() {
+        if(this.container) {
+            return;
+        }
+
+        const body = document.getElementsByTagName("body")[0];
+        this.container = document.createElement("div");
         this.container.id = "__toast_container";
         body.appendChild(this.container);
     };
 
-    ToastController.prototype.openToast = function(data){
-        var toast = new Toast(data.name, data.text, this);
+    /**
+     * Opens a new Toast based on the the configuration data passed in as a map
+     * 
+     * @param {Object} config the configuration data to configure how the Toast
+     * is created
+     * 
+     * @param {string} config.name the name of the Toast, to be used to
+     * reference it later
+     * 
+     * @param {string} config.text the text to display inside the Toast
+     * 
+     * @param {string=} config.icon the icon to display on the left side of the
+     * Toast
+     * 
+     * @param {string=} config.className additional class that will be added to
+     * the Toast's classes
+     * 
+     * @param {ToastPriority=} config.priority the level of priority that the 
+     * Toast has, out of two possible priorities: ToastPriority.HIGH or 
+     * ToastPriority.LOW
+     * 
+     * @returns {Toast} The Toast that was created and opened
+     */
+    ToastController.prototype.openToast = function(config){
+        var toast = new Toast(config.name, config.text, this);
 
-        if(data.icon) {
-            toast.icon = data.icon;
+        if(config.icon) {
+            toast.icon = config.icon;
         }
 
-        if(data.delay) {
-            toast.delay = data.delay;
+        if(config.delay) {
+            toast.delay = config.delay;
         }
 
-        if(data.className) {
-            toast.className = data.className;
+        if(config.className) {
+            toast.className = config.className;
         }
 
-        if(data.priority) {
-            toast.priority = data.priority;
+        if(config.priority) {
+            toast.priority = config.priority;
         }
 
         toast.create();
@@ -36,12 +76,25 @@
         return toast;
     };
 
+    /**
+     * Closes an existing Toast given the Toast's name (assuming it exists)
+     * 
+     * @param {string} name the name of the Toast set when calling openToast
+     */
     ToastController.prototype.closeToast = function(name){
         if(this.activeToasts[name]){
             this.activeToasts[name].close();
         }
     };
 
+    /**
+     * Alias to open a "success" type Toast, which has a low priority, green
+     * background, and the Material "done" icon.
+     * 
+     * @param {string} text the text to put inside the Toast
+     * 
+     * @returns {Toast}
+     */
     ToastController.prototype.success = function(text) {
         return this.openToast({
             name: "sucess",
@@ -51,6 +104,14 @@
         });
     };
 
+    /**
+     * Alias to open an "error" type Toast, which has a high priority, red
+     * background, and the Material "error" icon.
+     * 
+     * @param {string} text the text to put inside the Toast
+     * 
+     * @returns {Toast}
+     */
     ToastController.prototype.error = function(text) {
         return this.openToast({
             name: "error",
@@ -61,6 +122,14 @@
         });
     };
 
+    /**
+     * Alias to open a "warning" type Toast, which has a high priority, yellow
+     * background, and the Materal "warning" icon.
+     * 
+     * @param {string} text the text to put inside the Toast
+     * 
+     * @returns {Toast}
+     */
     ToastController.prototype.warn = function(text) {
         return this.openToast({
             name: "warning",
@@ -71,18 +140,36 @@
         });
     };
 
+    /**
+     * Creates a new Toast object based on the configuration passed in.
+     * 
+     * @class
+     * 
+     * @param {string} name the name of the Toast (used programmatically, never
+     * displayed)
+     * 
+     * @param {string} text the text to appear inside the Toast
+     * 
+     * @param {ToastController} controller the controller that manages this 
+     * Toast (so the Toast can tell its controller that it is going to destroy
+     * itself)
+     */
     var Toast = function(name, text, controller){
+        this.className = "";
+        this.closed = false;
+        this.controller = controller;
+        this.delay = 5000;
+        this.icon = false;
+        this.isOpen = false;
         this.name = name;
         this.text = text;
-        this.controller = controller;
-        this.isOpen = false;
-        this.closed = false;
-        this.icon = false;
         this.priority = window.ToastPriority.LOW;
-        this.className = "";
-        this.delay = 5000;
     };
 
+    /**
+     * Actually spawns the Toast's HTMLElement in the DOM, and starts the timer
+     * for it to dissapear. 
+     */
     Toast.prototype.create = function(){
         var self = this;
         var textContainer = document.createElement("span");
@@ -121,6 +208,10 @@
         }, this.delay);
     };
 
+    /**
+     * Sets the primary element for the Toast to have the proper priority and 
+     * ARIA attributes.
+     */
     Toast.prototype.assignPriority = function() {
         if(this.priority === window.ToastPriority.HIGH) {
             this.element.setAttribute("role", "alert");
@@ -130,6 +221,11 @@
         }
     };
 
+    /**
+     * Builds the <i> icon HTMLElement for the icon specified for the Toast
+     * 
+     * @returns {HTMLElement} the "i" tag element that represents the icon
+     */
     Toast.prototype.buildIcon = function() {
         var icon = document.createElement("i");
 
@@ -141,10 +237,19 @@
         return icon;
     };
 
+    /**
+     * Handler for "onclick" events fired on the Toast; will close the Toast 
+     * when the Toast is clicked.
+     */
     Toast.prototype.onClick = function(e){
         this.close();
     };
 
+    /**
+     * Handler for "transitionend" events fired on the Toast; will destroy the 
+     * Toast assuming that the Toast just closed and finished its closing 
+     * animation.
+     */
     Toast.prototype.transitionEnd = function(e){
         if(!this.isOpen){
             // destroy element and tell controller to forget about the Toast
@@ -154,6 +259,10 @@
         }
     };
 
+    /**
+     * Opens the Toast (assumes that the Toast's DOM compontent has been
+     * generated).
+     */
     Toast.prototype.open = function(){
         var self = this;
 
@@ -164,7 +273,10 @@
         });
     };
 
-    // Warning: close also destroys the Toast
+    /**
+     * Closes the Toast. Warning: once the Toast is finished closing, it will 
+     * destroy itself. 
+     */
     Toast.prototype.close = function(){
         if(this.closed){
             return;
