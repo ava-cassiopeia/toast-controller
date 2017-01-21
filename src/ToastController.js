@@ -5,12 +5,24 @@
      * @class
      */
     var ToastController = function(){
-        var body = document.getElementsByTagName("body")[0];
-
-        this.container = document.createElement("div");
         this.activeToasts = {};
         this.iconBase = "material-icons";
 
+        // Setup the container for Toasts
+        this.createContainer();
+    };
+
+    /**
+     * Creates a hidden div on the page to contain Toasts inside of it. The div 
+     * will be a child of the document body.
+     */
+    ToastController.prototype.createContainer = function() {
+        if(this.container) {
+            return;
+        }
+
+        const body = document.getElementsByTagName("body")[0];
+        this.container = document.createElement("div");
         this.container.id = "__toast_container";
         body.appendChild(this.container);
     };
@@ -143,15 +155,15 @@
      * itself)
      */
     var Toast = function(name, text, controller){
+        this.className = "";
+        this.closed = false;
+        this.controller = controller;
+        this.delay = 5000;
+        this.icon = false;
+        this.isOpen = false;
         this.name = name;
         this.text = text;
-        this.controller = controller;
-        this.isOpen = false;
-        this.closed = false;
-        this.icon = false;
         this.priority = window.ToastPriority.LOW;
-        this.className = "";
-        this.delay = 5000;
     };
 
     /**
@@ -260,7 +272,7 @@
             self.element.className = "toast open " + self.className;
         });
     };
-    
+
     /**
      * Closes the Toast. Warning: once the Toast is finished closing, it will 
      * destroy itself. 
