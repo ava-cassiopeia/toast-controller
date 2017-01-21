@@ -1,7 +1,7 @@
 {
   "name": "toast-controller",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.9.2",
+  "description": "Vanilla JS implementation of the Toast alert",
   "main": "gulpfile.js",
   "directories": {
     "example": "examples"
@@ -14,7 +14,10 @@
     "material",
     "design",
     "material",
-    "popup"
+    "popup",
+    "google",
+    "modal",
+    "alert"
   ],
   "author": "Ivan Mattie",
   "license": "ISC",
