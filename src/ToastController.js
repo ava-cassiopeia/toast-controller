@@ -25,6 +25,10 @@
             toast.className = data.className;
         }
 
+        if(data.priority) {
+            toast.priority = data.priority;
+        }
+
         toast.create();
 
         this.activeToasts[name] = toast;
@@ -52,7 +56,8 @@
             name: "error",
             text: text,
             icon: "error",
-            className: "error"
+            className: "error",
+            priority: window.ToastPriority.HIGH
         });
     };
 
@@ -61,7 +66,8 @@
             name: "warning",
             text: text,
             icon: "warning",
-            className: "warn"
+            className: "warn",
+            priority: window.ToastPriority.HIGH
         });
     };
 
@@ -72,6 +78,7 @@
         this.isOpen = false;
         this.closed = false;
         this.icon = false;
+        this.priority = window.ToastPriority.LOW;
         this.className = "";
         this.delay = 5000;
     };
@@ -80,6 +87,8 @@
         var self = this;
         var textContainer = document.createElement("span");
         this.element = document.createElement("div");
+
+        this.assignPriority();
 
         this.element.className = "toast " + this.className;
         textContainer.className = "text";
@@ -112,11 +121,22 @@
         }, this.delay);
     };
 
+    Toast.prototype.assignPriority = function() {
+        if(this.priority === window.ToastPriority.HIGH) {
+            this.element.setAttribute("role", "alert");
+        } else {
+            this.element.setAttribute("role", "dialog");
+            this.element.setAttribute("aria-label", "Toast Notification");
+        }
+    };
+
     Toast.prototype.buildIcon = function() {
         var icon = document.createElement("i");
 
         icon.className = window.ToastController.iconBase + " icon";
         icon.innerHTML = this.icon;
+
+        icon.setAttribute("aria-hidden", "true");
 
         return icon;
     };
@@ -163,6 +183,11 @@
     document.addEventListener("DOMContentLoaded", function() {
         if(!window.ToastController){
             window.ToastController = new ToastController();
+
+            window.ToastPriority = {
+                HIGH: 1,
+                LOW: 0
+            };
         }
     }, false);
 })();
