@@ -18,8 +18,9 @@ ToastController, then import the `ToastController.min.js` into your site
 wherever needed. 
 
 In addition, you'll need the styles associated with it. You can either import
-the included `sass/toast.scss` into your SASS/SCSS, or just import the prebuilt
-stylesheet in the `dist/css/` folder, which is called `toast-controller.min.css`. 
+the included `sass/toast.scss` into your SASS/SCSS, the included
+`less/toast.less`, or just import the prebuilt stylesheet in the `dist/css/`
+folder, which is called `toast-controller.min.css`. 
 
 ## Useage
 
