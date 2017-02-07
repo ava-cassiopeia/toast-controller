@@ -1,0 +1,39 @@
+{
+  "name": "toast-controller",
+  "description": "Vanilla JS implementation of the Toast alert",
+  "main": [
+    "dist/css/toast-controller.min.css",
+    "dist/js/ToastController.min.js",
+    "sass/toast.scss",
+    "less/toast.less"
+  ],
+  "authors": [
+    "Ivan Mattie"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "toast",
+    "material",
+    "design",
+    "material",
+    "popup",
+    "google",
+    "modal",
+    "alert",
+    "javascript",
+    "module"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "gulpfile.js",
+    "package.json",
+    "src/*",
+    "src/**/*"
+    "examples/*"
+  ]
+}
