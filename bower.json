@@ -33,7 +33,7 @@
     "gulpfile.js",
     "package.json",
     "src/*",
-    "src/**/*"
+    "src/**/*",
     "examples/*"
   ]
 }
