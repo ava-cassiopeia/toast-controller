@@ -11,6 +11,15 @@ documentation, please check out the
 [project wiki](https://github.com/aeolingamenfel/toast-controller/wiki). If you
 are still having trouble/questions, feel free to open an issue. 
 
+## Installation
+
+You can either download the latest release of the project, or install it from 
+[Bower](https://bower.io/) by using:
+
+```
+bower install --save toast-controller
+```
+
 ## Importing into Your Project
 
 To import this into your project/website, download the lastest copy of the
