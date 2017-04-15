@@ -1,6 +1,6 @@
 $toast_offset_left: 5px !default;
 $toast_offset_bottom: 5px !default;
-$toast_mobile_cutoff: 320px !default;
+$toast_mobile_cutoff: 520px !default;
 $toast_font_size: 16px !default;
 $toast_font_size_mobile: $toast_font_size + 2px !default;
 $toast_mobile_style_change: true !default;
@@ -65,6 +65,7 @@ $toast_warn_color: #FFC107 !default;
             width: 100vw;
             box-sizing: border-box;
             max-width: none;
+            box-shadow: 0 -1px 6px 1px rgba(0, 0, 0, 0.5);
 
             &.open {
                 transform: translateY(-60px);
