@@ -3,7 +3,7 @@
  *
  * @class
  */
-export default class Toast {
+export class Toast {
 
     /**
      * @param {string} name the name of the Toast (used programmatically, never

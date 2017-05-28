@@ -1,18 +1,20 @@
 import {Toast} from "./Toast.js";
 
 /**
- * Creates a new ToastController, which is a manager for Toasts. Should only
+ * Creates a new Toast Manager, which is a manager for Toasts. Should only
  * ever be one of these on a page.
  * @class
  */
-export default class ToastController {
+export class ToastManager {
 
     constructor() {
         this.activeToasts = {};
         this.iconBase = "material-icons";
 
-        // Setup the container for Toasts
-        this.createContainer();
+        // setup the container for Toasts
+        document.addEventListener("DOMContentLoaded", function(e) {
+            this.createContainer();
+        }.bind(this), false);
     }
 
     /**
@@ -88,59 +90,6 @@ export default class ToastController {
         if(this.activeToasts[name]){
             this.activeToasts[name].close();
         }
-    }
-
-    /**
-     * Alias to open a "success" type Toast, which has a low priority, green
-     * background, and the Material "done" icon.
-     *
-     * @param {string} text the text to put inside the Toast
-     *
-     * @returns {Toast}
-     */
-    success(text) {
-        return this.openToast({
-            name: "sucess",
-            text: text,
-            icon: "done",
-            className: "success"
-        });
-    }
-
-    /**
-     * Alias to open an "error" type Toast, which has a high priority, red
-     * background, and the Material "error" icon.
-     *
-     * @param {string} text the text to put inside the Toast
-     *
-     * @returns {Toast}
-     */
-    error(text) {
-        return this.openToast({
-            name: "error",
-            text: text,
-            icon: "error",
-            className: "error",
-            priority: window.ToastPriority.HIGH
-        });
-    }
-
-    /**
-     * Alias to open a "warning" type Toast, which has a high priority, yellow
-     * background, and the Materal "warning" icon.
-     *
-     * @param {string} text the text to put inside the Toast
-     *
-     * @returns {Toast}
-     */
-    warn(text) {
-        return this.openToast({
-            name: "warning",
-            text: text,
-            icon: "warning",
-            className: "warn",
-            priority: window.ToastPriority.HIGH
-        });
     }
 
 }

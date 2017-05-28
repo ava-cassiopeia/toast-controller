@@ -1,26 +1,47 @@
-import {ToastController} from "./ToastController.js";
+import {ToastManager} from "./ToastManager.js";
 
-export var test = function() {
-    console.log("test() called");
+var controller = new ToastManager();
+
+export var openToast = function(config) {
+    return controller.openToast(config);
+};
+
+export var closeToast = function(name) {
+    controller.closeToast(name);
+};
+
+export var success = function(text) {
+    return controller.openToast({
+        name: "sucess",
+        text: text,
+        icon: "done",
+        className: "success"
+    });
+};
+
+export var error = function(text) {
+    return controller.openToast({
+        name: "error",
+        text: text,
+        icon: "error",
+        className: "error",
+        priority: window.ToastPriority.HIGH
+    });
+};
+
+export var warn = function(text) {
+    return controller.openToast({
+        name: "warning",
+        text: text,
+        icon: "warning",
+        className: "warn",
+        priority: window.ToastPriority.HIGH
+    });
 };
 
 (function() {
-    function init() {
-        if(!window.ToastController){
-            window.ToastController = new ToastController();
-
-            window.ToastPriority = {
-                HIGH: 1,
-                LOW: 0
-            };
-        }
-    }
-
-    if(document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", function() {
-            init();
-        }, false);
-    } else {
-        init();
-    }
+    window.ToastPriority = {
+        HIGH: 1,
+        LOW: 0
+    };
 })();
