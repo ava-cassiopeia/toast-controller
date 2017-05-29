@@ -38,8 +38,17 @@ $snackbar_offset-bottom: 24px;
     font-size: $toast_font_size;
     max-width: 15em;
 
+    &.centered {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
     &.open{
         transform: translateY(-80px - $snackbar_offset-bottom);
+
+        &.centered {
+            transform: translateY(-80px) translateX(-50%);
+        }
     }
 
     // Colors

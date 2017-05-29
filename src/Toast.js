@@ -11,6 +11,8 @@ export class Toast {
      *
      * @param {string} text the text to appear inside the Toast
      *
+     * @param {boolean} isCentered if true, will center the toast on screen
+     *
      * @param {ToastController} controller the controller that manages this
      * Toast (so the Toast can tell its controller that it is going to destroy
      * itself)
@@ -22,6 +24,7 @@ export class Toast {
         this.delay = 5000;
         this.icon = false;
         this.isOpen = false;
+        this.isCentered = false;
         this.name = name;
         this.text = text;
         this.priority = window.ToastPriority.LOW;
@@ -44,6 +47,10 @@ export class Toast {
 
         if(this.icon) {
             this.element.appendChild(this.buildIcon());
+        }
+
+        if(this.isCentered) {
+            this.element.classList.add("centered");
         }
 
         this.element.appendChild(textContainer);
@@ -125,13 +132,11 @@ export class Toast {
      * generated).
      */
     open() {
-        var self = this;
-
         this.isOpen = true;
 
         requestAnimationFrame(function(){
-            self.element.className = "toast open " + self.className;
-        });
+            this.element.classList.add("open");
+        }.bind(this));
     }
 
     /**
@@ -143,14 +148,12 @@ export class Toast {
             return;
         }
 
-        var self = this;
-
         this.isOpen = false;
         this.closed = true;
 
         requestAnimationFrame(function(){
-            self.element.className = "toast " + self.className;
-        });
+            this.element.classList.remove("open");
+        }.bind(this));
     }
 
 }

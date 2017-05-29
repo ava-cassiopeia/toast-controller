@@ -2,6 +2,7 @@ var gulp = require("gulp");
 var sass = require("gulp-sass");
 var rename = require("gulp-rename");
 var uglify = require("gulp-uglify");
+var webpack = require('gulp-webpack');
 
 gulp.task("default", ["build-css", "build-js"], function() {});
 
@@ -16,8 +17,7 @@ gulp.task("build-css", function() {
 
 gulp.task("build-js", function() {
     return gulp.src(["src/*.js"])
-        .pipe(uglify())
-        .pipe(rename("ToastController.min.js"))
+        .pipe(webpack(require("./webpack.config.js")))
         .pipe(gulp.dest("dist/js/"));
 });
 

@@ -24,6 +24,10 @@
             Open Toast
         </button>
         <br />
+        <button type="button" onclick="openTestToast(false, false, true)">
+            Open Toast (centered)
+        </button>
+        <br />
         <button type="button" onclick="openTestToast(false, true)">
             Open with Icon
         </button>
@@ -36,7 +40,7 @@
         </p>
 
         <script type="text/javascript">
-            function openTestToast(fast, withIcon) {
+            function openTestToast(fast, withIcon, centered) {
                 var content = document.getElementById('toast-content').value;
 
                 var config = {
@@ -50,6 +54,10 @@
 
                 if(fast) {
                     config.delay = 1000;
+                }
+
+                if(typeof centered !== 'undefined') {
+                    config.centered = true;
                 }
 
                 ToastController.openToast(config);

@@ -43,6 +43,8 @@ export class ToastManager {
      *
      * @param {string} config.text the text to display inside the Toast
      *
+     * @param {boolean=} config.centered if true, centers the toast on screen
+     *
      * @param {string=} config.icon the icon to display on the left side of the
      * Toast
      *
@@ -72,6 +74,10 @@ export class ToastManager {
 
         if(config.priority) {
             toast.priority = config.priority;
+        }
+
+        if(typeof config.centered !== 'undefined') {
+            toast.isCentered = config.centered;
         }
 
         toast.create();
