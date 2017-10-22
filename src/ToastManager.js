@@ -1,4 +1,4 @@
-import {Toast} from "./Toast.js";
+import {Toast} from "Toast";
 
 /**
  * Creates a new Toast Manager, which is a manager for Toasts. Should only

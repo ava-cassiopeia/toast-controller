@@ -1,3 +1,5 @@
+import * as ToastPriority from "ToastPriority";
+
 /**
  * Creates a new Toast object based on the configuration passed in.
  *
@@ -27,7 +29,7 @@ export class Toast {
         this.isCentered = false;
         this.name = name;
         this.text = text;
-        this.priority = window.ToastPriority.LOW;
+        this.priority = ToastPriority.LOW;
     }
 
     /**
@@ -81,7 +83,7 @@ export class Toast {
      * ARIA attributes.
      */
     assignPriority() {
-        if(this.priority === window.ToastPriority.HIGH) {
+        if(this.priority === ToastPriority.HIGH) {
             this.element.setAttribute("role", "alert");
         } else {
             this.element.setAttribute("role", "dialog");

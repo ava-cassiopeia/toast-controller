@@ -1,4 +1,5 @@
-import {ToastManager} from "./ToastManager.js";
+import {ToastManager} from "ToastManager";
+import * as ToastPriority from "ToastPriority";
 
 var controller = new ToastManager();
 
@@ -25,7 +26,7 @@ export var error = function(text) {
         text: text,
         icon: "error",
         className: "error",
-        priority: window.ToastPriority.HIGH
+        priority: ToastPriority.HIGH
     });
 };
 
@@ -35,13 +36,6 @@ export var warn = function(text) {
         text: text,
         icon: "warning",
         className: "warn",
-        priority: window.ToastPriority.HIGH
+        priority: ToastPriority.HIGH
     });
 };
-
-(function() {
-    window.ToastPriority = {
-        HIGH: 1,
-        LOW: 0
-    };
-})();
