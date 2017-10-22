@@ -5,6 +5,7 @@ const uglify = require("gulp-uglify");
 const webpack2 = require("webpack");
 const webpack = require('webpack-stream');
 const gulpif = require("gulp-if");
+const zip = require("gulp-zip");
 
 const SASS_RESOURCES = [
     "sass/*.scss"
@@ -32,6 +33,15 @@ gulp.task("build-js", function(production) {
         .pipe(webpack(require("./webpack.config.js"), webpack2))
         .pipe(gulpif(production, uglify()))
         .pipe(gulp.dest("dist/js/"));
+});
+
+gulp.task("build-release", ["build-css", "build-js"], function() {
+    const packageFile = require("./package.json");
+    const version = packageFile.version;
+
+    return gulp.src(["dist/*", "dist/**/*"])
+        .pipe(zip(`toast-controller_v${version}.zip`))
+        .pipe(gulp.dest("releases/"));
 });
 
 gulp.task("watch", function() {
