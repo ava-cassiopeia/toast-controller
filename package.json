@@ -2,7 +2,7 @@
   "name": "toast-controller",
   "version": "0.10.0",
   "description": "Vanilla JS implementation of the Toast alert",
-  "main": "gulpfile.js",
+  "main": "src/index.js",
   "directories": {
     "example": "examples"
   },
@@ -22,9 +22,18 @@
   "author": "Ivan Mattie",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-env": "^1.5.1",
     "gulp": "^3.9.1",
+    "gulp-if": "^2.0.2",
+    "gulp-param": "^1.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.0.0",
-    "gulp-uglify": "^2.0.0"
+    "gulp-uglify": "^2.1.2",
+    "gulp-webpack": "^1.5.0",
+    "gulp-zip": "^4.0.0",
+    "webpack": "^2.6.0",
+    "webpack-stream": "^4.0.0"
   }
 }

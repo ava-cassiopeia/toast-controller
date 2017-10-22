@@ -4,16 +4,25 @@
 
 Vanilla JS, performant implementation of the Toast, a popular UI element used primarily by
 Google and material design applications. Built to be plug-and-play, but you can
-easily extend and modify the JS and CSS to your liking. 
+easily extend and modify the JS and CSS to your liking.
 
 Basic useage and examples are provided below. If you require additional
 documentation, please check out the
 [project wiki](https://github.com/aeolingamenfel/toast-controller/wiki). If you
-are still having trouble/questions, feel free to open an issue. 
+are still having trouble/questions, feel free to open an issue.
+
+**Major Features:**
+
+ - Vanilla JS, CSS; no frameworks/plugins required
+ - Follows the [Material Design spec](https://material.io/guidelines/components/snackbars-toasts.html#) for Toasts/Snackbars
+ - Performant (uses proper layers and transformations)
+ - #a11y (accessibility friendly)
+ - Integrates with existing build systems/projects
+ - No inline JS
 
 ## Installation
 
-You can either download the latest release of the project, or install it from 
+You can either download the latest release of the project, or install it from
 [Bower](https://bower.io/) by using:
 
 ```
@@ -24,17 +33,17 @@ bower install --save toast-controller
 
 To import this into your project/website, download the lastest copy of the
 ToastController, then import the `ToastController.min.js` into your site
-wherever needed. 
+wherever needed.
 
 In addition, you'll need the styles associated with it. You can either import
 the included `sass/toast.scss` into your SASS/SCSS, the included
 `less/toast.less`, or just import the prebuilt stylesheet in the `dist/css/`
-folder, which is called `toast-controller.min.css`. 
+folder, which is called `toast-controller.min.css`.
 
 ## Useage
 
 This is just a sample of how to use the ToastController, check out the wiki to
-get more detailed information on methods and options. 
+get more detailed information on methods and options.
 
 ### Basics
 
@@ -44,7 +53,7 @@ automatically close after 5 seconds (or a delay of your specification):
 ```
 ToastController.openToast({
     name: "hello.world",
-    text: "Hello, World!" 
+    text: "Hello, World!"
 });
 ```
 
@@ -70,7 +79,7 @@ toast.close();
 
 ### Options
 
-You can also specify different options to control the behavior of the Toast. 
+You can also specify different options to control the behavior of the Toast.
 For example, you can specify how long of a delay before the Toast
 automatically closes itself. This is by default 5 seconds.
 
@@ -104,7 +113,7 @@ custom icons/other icon sets.
 
 ## Feedback, Bugs, Etc.
 
-If you encounter any bugs, wish there was some feature that I didn't think 
+If you encounter any bugs, wish there was some feature that I didn't think
 of, or just wish to provide feedback, feel free to
 [open an issue](https://github.com/aeolingamenfel/toast-controller/issues),
 or contact me directly. I'm more than happy to help.
@@ -113,6 +122,6 @@ or contact me directly. I'm more than happy to help.
 
 This code is open source, and licensed under the popular ISC license for you
 to use at your discretion. TL;DR: you can use it however you want, just make
-sure to mention my name somewhere in your project. 
+sure to mention my name somewhere in your project.
 
-The name Google is a trademark of Google Inc. 
+The name Google is a trademark of Google Inc.
