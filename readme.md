@@ -29,11 +29,23 @@ You can either download the latest release of the project, or install it from
 bower install --save toast-controller
 ```
 
+Or install it using NPM using:
+
+```
+npm i --save toast-controller
+```
+
 ## Importing into Your Project
 
 To import this into your project/website, download the lastest copy of the
 ToastController, then import the `ToastController.min.js` into your site
 wherever needed.
+
+If you use webpack, you can import the ToastController into your output using:
+
+```Javascript
+import * as ToastController from "toast-controller";
+```
 
 In addition, you'll need the styles associated with it. You can either import
 the included `sass/toast.scss` into your SASS/SCSS, the included
