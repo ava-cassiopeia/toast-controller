@@ -2,7 +2,7 @@
   "name": "toast-controller",
   "version": "0.10.0",
   "description": "Vanilla JS implementation of the Toast alert",
-  "main": "gulpfile.js",
+  "main": "src/index.js",
   "directories": {
     "example": "examples"
   },
