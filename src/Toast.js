@@ -37,7 +37,6 @@ export class Toast {
      * for it to dissapear.
      */
     create(){
-        var self = this;
         var textContainer = document.createElement("span");
         this.element = document.createElement("div");
 
@@ -58,24 +57,24 @@ export class Toast {
         this.element.appendChild(textContainer);
 
         // Bindings
-        this.element.addEventListener("transitionend", function(e){
-            self.transitionEnd(e);
-        }, false);
+        this.element.addEventListener("transitionend", function(e) {
+            this.transitionEnd(e);
+        }.bind(this), false);
 
-        this.element.onclick = function(e){
-            self.onClick(e);
-        };
+        this.element.onclick = function(e) {
+            this.onClick(e);
+        }.bind(this);
 
         // Finally, open it up
-        requestAnimationFrame(function(){
-            self.controller.container.appendChild(self.element);
+        requestAnimationFrame(function() {
+            this.controller.container.appendChild(this.element);
 
-            self.open();
-        });
+            this.open();
+        }.bind(this));
 
-        setTimeout(function(){
-            self.close();
-        }, this.delay);
+        setTimeout(function() {
+            this.close();
+        }.bind(this), this.delay);
     }
 
     /**
@@ -107,7 +106,7 @@ export class Toast {
     buildIcon() {
         var icon = document.createElement("i");
 
-        icon.className = window.ToastController.iconBase + " icon";
+        icon.className = this.controller.iconBase + " icon";
         icon.innerHTML = this.icon;
 
         icon.setAttribute("aria-hidden", "true");
