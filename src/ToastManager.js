@@ -12,9 +12,15 @@ export class ToastManager {
         this.iconBase = "material-icons";
 
         // setup the container for Toasts
-        document.addEventListener("DOMContentLoaded", function(e) {
+        if (document.readyState === "complete"
+            || document.readyState === "loaded"
+            || document.readyState === "interactive") {
             this.createContainer();
-        }.bind(this), false);
+        } else {
+            document.addEventListener("DOMContentLoaded", function(e) {
+                this.createContainer();
+            }.bind(this), false);
+        }
     }
 
     /**
