@@ -1,5 +1,5 @@
-import {ToastManager} from "ToastManager";
-import * as ToastPriority from "ToastPriority";
+import {ToastManager} from "./ToastManager";
+import * as ToastPriority from "./ToastPriority";
 
 var controller = new ToastManager();
 
