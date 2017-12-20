@@ -1,4 +1,4 @@
-import * as ToastPriority from "ToastPriority";
+import * as ToastPriority from "./ToastPriority";
 
 /**
  * Creates a new Toast object based on the configuration passed in.
