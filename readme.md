@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/aeolingamenfel/toast-controller.svg?branch=master)](https://travis-ci.org/aeolingamenfel/toast-controller)
 [![npm version](https://badge.fury.io/js/toast-controller.svg)](https://badge.fury.io/js/toast-controller)
 
-![Example Gif of Toast Animating](https://raw.githubusercontent.com/aeolingamenfel/toast-controller/cleanup/examples/ex.gif)
+![Example Gif of Toast Animating](https://raw.githubusercontent.com/aeolingamenfel/toast-controller/master/examples/ex.gif)
 
 Vanilla JS, performant implementation of the Toast, a popular UI element used
 primarily by Google and material design applications. Built to be plug-and-play,
