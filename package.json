@@ -35,5 +35,14 @@
     "gulp-zip": "^4.0.0",
     "webpack": "^2.6.0",
     "webpack-stream": "^4.0.0"
-  }
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeolingamenfel/toast-controller.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aeolingamenfel/toast-controller/issues"
+  },
+  "homepage": "https://github.com/aeolingamenfel/toast-controller#readme"
 }
