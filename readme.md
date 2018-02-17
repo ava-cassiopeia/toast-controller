@@ -23,13 +23,7 @@ are still having trouble/questions, feel free to open an issue.
 ## Installation
 
 You can either download the latest release of the project, or install it from
-[Bower](https://bower.io/) by using:
-
-```
-bower install --save toast-controller
-```
-
-Or install it using NPM using:
+NPM using:
 
 ```
 npm i --save toast-controller
