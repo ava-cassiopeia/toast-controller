@@ -1,10 +1,13 @@
 # ToastController.js
 
 [![Build Status](https://travis-ci.org/aeolingamenfel/toast-controller.svg?branch=master)](https://travis-ci.org/aeolingamenfel/toast-controller)
+[![npm version](https://badge.fury.io/js/toast-controller.svg)](https://badge.fury.io/js/toast-controller)
 
-Vanilla JS, performant implementation of the Toast, a popular UI element used primarily by
-Google and material design applications. Built to be plug-and-play, but you can
-easily extend and modify the JS and CSS to your liking.
+![Example Gif of Toast Animating](https://raw.githubusercontent.com/aeolingamenfel/toast-controller/cleanup/examples/ex.gif)
+
+Vanilla JS, performant implementation of the Toast, a popular UI element used
+primarily by Google and material design applications. Built to be plug-and-play,
+but you can easily extend and modify the JS and CSS to your liking.
 
 Basic useage and examples are provided below. If you require additional
 documentation, please check out the
@@ -56,7 +59,7 @@ get more detailed information on methods and options.
 To open a Toast, just call `ToastController.openToast()`. The Toast will
 automatically close after 5 seconds (or a delay of your specification):
 
-```
+```Javascript
 ToastController.openToast({
     name: "hello.world",
     text: "Hello, World!"
@@ -66,14 +69,14 @@ ToastController.openToast({
 To close a Toast manually, just call `ToastController.closeToast()` with the
 name of the Toast you specified when you opened it:
 
-```
+```Javascript
 ToastController.closeToast("hello.world");
 ```
 
 You can also close the toast by calling the `close()` method on the actual Toast
 object, which is returned from the `openToast()` method:
 
-```
+```Javascript
 var toast = ToastController.openToast({
    name: "hello.world",
    text: "Hello, World!"
@@ -89,7 +92,7 @@ You can also specify different options to control the behavior of the Toast.
 For example, you can specify how long of a delay before the Toast
 automatically closes itself. This is by default 5 seconds.
 
-```
+```Javascript
 ToastController.openToast({
     name: "delayed",
     text: "Hello, World!",
@@ -106,7 +109,7 @@ import the Material Icons stylesheet in order to use those icons.
 To add an icon to a Toast, when you open it, you can specify the `icon`
 parameter, and the name of the icon. For example:
 
-```
+```Javascript
 ToastController.openToast({
     name: "success.with-icon",
     text: "Success",
